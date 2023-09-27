@@ -30,7 +30,6 @@ final class NetworkManager{
             task.resume()
         }
     }
-    
 }
 
 
