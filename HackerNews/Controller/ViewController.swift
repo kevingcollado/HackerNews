@@ -6,20 +6,24 @@
 //
 
 import UIKit
+import Alamofire
 
 class ViewController: UIViewController{
-    //Variables, constantes
+    //Instancia de NetworkManager
     let networkManager = NetworkManager()
-    //Outlet
+    //Outlets
     @IBOutlet weak var mainTableView: UITableView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Implementar protocolo dataSource y delegate
         mainTableView.dataSource = self
         mainTableView.delegate = self
+        //
         mainTableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "CustomCell")
         
+        networkManager.getPost()
     }
 }
 
@@ -30,7 +34,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //return 80
         return UITableView.automaticDimension
     }
 
@@ -39,7 +42,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell?.titleLabel.text = postTest[indexPath.row].title
         cell?.authorLabel.text = postTest[indexPath.row].author
         cell?.pointsLabel.text = postTest[indexPath.row].points.description
-        cell?.createdAtLabel.text = postTest[indexPath.row].createdAt
+        cell?.createdAtLabel.text = postTest[indexPath.row].created_at
         return cell!
     }
 
