@@ -9,20 +9,19 @@ import Foundation
 import Alamofire
 
 
-final class NetworkManager{
-    
-    func getPost(){
+final class NetworkManager {
+    func getPost(handler: @escaping(_ apiData: Results)->(Void)) {
         AF.request("https://hn.algolia.com/api/v1/search?tags=front_page").response { response in
-            switch response.result{
+            switch response.result {
             case .success(let data):
-                do{
+                do {
                     let jsonData = try JSONDecoder().decode(Results.self, from: data!)
-                    print(jsonData)
-                }catch{
-                    print(String(describing: error))
+                    handler(jsonData)
+                } catch {
+                    print(error)
                 }
             case .failure(let error):
-                print(String(describing: error))
+                print(error)
             }
         }
     }
