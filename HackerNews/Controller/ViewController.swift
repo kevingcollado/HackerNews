@@ -58,7 +58,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(resultAPIData[indexPath.row].url!)
+        if let resultAPIDataSafe = resultAPIData[indexPath.row].url{
+            print(resultAPIDataSafe)
+        }else{
+            print("Por aquí no hay nada")
+        }
+        
     }
     
 }
