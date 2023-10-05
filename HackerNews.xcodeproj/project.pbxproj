@@ -17,6 +17,7 @@
 		D582CA442AB16F8C00A83771 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D582CA432AB16F8C00A83771 /* PostData.swift */; };
 		D582CA472AB3ECAF00A83771 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D582CA452AB3ECAF00A83771 /* CustomCell.swift */; };
 		D582CA482AB3ECAF00A83771 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D582CA462AB3ECAF00A83771 /* CustomCell.xib */; };
+		D586AED02ACE680600B032D6 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D586AECF2ACE680600B032D6 /* WebViewController.swift */; };
 		D5B502112AC29006008FB463 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D5B502102AC29006008FB463 /* Alamofire */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		D582CA432AB16F8C00A83771 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		D582CA452AB3ECAF00A83771 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		D582CA462AB3ECAF00A83771 /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
+		D586AECF2ACE680600B032D6 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			children = (
 				D582CA452AB3ECAF00A83771 /* CustomCell.swift */,
 				D582CA2D2AB16EA600A83771 /* ViewController.swift */,
+				D586AECF2ACE680600B032D6 /* WebViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				D582CA422AB16F6600A83771 /* NetworkManager.swift in Sources */,
 				D582CA2E2AB16EA600A83771 /* ViewController.swift in Sources */,
 				D582CA2A2AB16EA600A83771 /* AppDelegate.swift in Sources */,
+				D586AED02ACE680600B032D6 /* WebViewController.swift in Sources */,
 				D582CA472AB3ECAF00A83771 /* CustomCell.swift in Sources */,
 				D582CA2C2AB16EA600A83771 /* SceneDelegate.swift in Sources */,
 			);

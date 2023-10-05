@@ -11,6 +11,7 @@ import Alamofire
 class ViewController: UIViewController{
     //Instancia de NetworkManager
     var resultAPIData = [Post]()
+    var urlToGoViewController: String?
     //Outlets
     @IBOutlet weak var mainTableView: UITableView!
     
@@ -33,11 +34,6 @@ class ViewController: UIViewController{
     }
 }
 
-
-
-
-
-
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,11 +55,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let resultAPIDataSafe = resultAPIData[indexPath.row].url{
-            print(resultAPIDataSafe)
-        }else{
-            print("Por aquí no hay nada")
+            urlToGoViewController = resultAPIDataSafe
+            self.performSegue(withIdentifier: "mainViewControllerToWebViewController", sender: self)
         }
-        
+    }
+    //Sobreescribir el método prepare y pasar datos entre pantallas
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destino = segue.destination as? WebViewController{
+            destino.urlToGoWebViewController = self.urlToGoViewController
+        }
     }
     
 }
