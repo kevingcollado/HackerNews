@@ -15,21 +15,27 @@ class ViewController: UIViewController{
     var urlToGoViewController: String?
     //Outlets
     @IBOutlet weak var mainTableView: UITableView!
+    @IBOutlet weak var actIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Ocultar cuando activity indicator se detenga
+        actIndicator.hidesWhenStopped = true
+        //Iniciar animación de activity indicator
+        actIndicator.startAnimating()
         //Implementar protocolo dataSource y delegate
         mainTableView.dataSource = self
         mainTableView.delegate = self
         //Registrar celda personalizada
         mainTableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "CustomCell")
-        
         //Llama al método getPost() para obtener los datos de la API
         NetworkManager.sharedInstanced.getPost { apiData in
             self.resultAPIData = apiData.hits
             //Actualiza la tabla con los datos de la API
             DispatchQueue.main.async {
                 self.mainTableView.reloadData()
+                //Detener animación de activity indicator
+                self.actIndicator.stopAnimating()
             }
         }
     }

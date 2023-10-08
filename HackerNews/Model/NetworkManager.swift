@@ -23,7 +23,6 @@ final class NetworkManager {
                 do {
                     let jsonData = try JSONDecoder().decode(Results.self, from: data!)
                     handler(jsonData)
-                    print(jsonData)
                 }catch{
                     print(String(describing: error))
                 }
