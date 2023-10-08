@@ -11,6 +11,7 @@ import Alamofire
 class ViewController: UIViewController{
     //Instancia de NetworkManager
     var resultAPIData = [Post]()
+    //Variables
     var urlToGoViewController: String?
     //Outlets
     @IBOutlet weak var mainTableView: UITableView!
@@ -35,15 +36,17 @@ class ViewController: UIViewController{
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
-    
+    //Número de filas
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return resultAPIData.count
     }
     
-        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    //Altura automática
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return UITableView.automaticDimension
-        }
+    }
     
+    //Pintar datos en celda
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as? CustomCell
         cell?.titleLabel.text = resultAPIData[indexPath.row].title
@@ -53,12 +56,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell!
     }
     
+    //Obtener dato de celda seleccionada
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let resultAPIDataSafe = resultAPIData[indexPath.row].url{
             urlToGoViewController = resultAPIDataSafe
             self.performSegue(withIdentifier: "mainViewControllerToWebViewController", sender: self)
         }
+        //Deseleccionar celda
+        mainTableView.deselectRow(at: indexPath, animated: true)
     }
+    
     //Sobreescribir el método prepare y pasar datos entre pantallas
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destino = segue.destination as? WebViewController{

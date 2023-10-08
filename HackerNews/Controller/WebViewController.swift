@@ -9,25 +9,17 @@ import UIKit
 import WebKit
 
 class WebViewController: UIViewController {
-
+    
     let mainVC = ViewController()
+    //Variable
     var urlToGoWebViewController: String?
     @IBOutlet weak var mainWebView: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Obtener dato seguro del opcional
         if let safeUrlToGoWebViewController = urlToGoWebViewController{
+            //Pasar parámetro seguro
             mainWebView.load(URLRequest(url: URL(string: safeUrlToGoWebViewController)!))
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
